@@ -14,13 +14,15 @@ export function GridSkillsSection() {
 
   // useEffectフックでAPI Routesにアクセスしてデータを取得する
   useEffect(()=>{
-    const fetchSklls = async () => {
+    const fetchSkills = async () => {
       const response = await fetch('http://localhost:3000/api/skills');
       const data = await response.json();
       setSkills(data);
     };
-    fetchSklls();
+    fetchSkills();
   },[]);
+  
+  console.log(skills);
 
   return (
     <Container my="md" className="bg-white p-8 pt-2 rounded-2xl drop-shadow-lg">
@@ -40,7 +42,7 @@ export function GridSkillsSection() {
                   <Image 
                     src= {`/${skill.path}.png`} 
                     alt={skill.path} 
-                    objectFit="cover" 
+                    // objectFit="cover" 
                     width={200} 
                     height={200} 
                   />
