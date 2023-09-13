@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <main className="">
       {/* 自分のアイコン画像入れる */}
-      {/* <UserInfoIcons /> */}
+      <UserInfoIcons />
       <GridSkillsSection />
       <GridIntroduceSection />  
       {/* 以下に自分が投稿した記事が一覧で出るようにする */}

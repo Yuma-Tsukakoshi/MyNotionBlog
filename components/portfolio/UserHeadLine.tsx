@@ -12,11 +12,12 @@ const useStyles = createStyles((theme) => ({
 
 interface UserInfoIconsProps {
   avatar: string;
-  name: string;
-  title: string;
+  // name: string;
+  // title: string;
 }
 
-export function UserInfoIcons({ avatar, name, title}: UserInfoIconsProps) {
+// export function UserInfoIcons({ avatar, name, title}: UserInfoIconsProps) {
+export function UserInfoIcons({ avatar }: UserInfoIconsProps) {
   const { classes } = useStyles();
   return (
     <Container my="md" className="bg-white p-8 pt-2 rounded-2xl drop-shadow-lg">
