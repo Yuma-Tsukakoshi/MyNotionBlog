@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Skill } from "@/types";
+import { Skill } from "../../types";
 import Image from "next/image";
 
 import { MantineProvider, Center, Group } from '@mantine/core';
@@ -21,8 +21,6 @@ export function GridSkillsSection() {
     };
     fetchSklls();
   },[]);
-
-  console.log(skills)
 
   return (
     <Container my="md" className="bg-white p-8 pt-2 rounded-2xl drop-shadow-lg">
