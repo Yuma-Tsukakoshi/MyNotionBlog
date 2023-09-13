@@ -1,4 +1,4 @@
-English | [日本語](README.ja.md) | [한국어](README.kr.md)
+English | [日本語](README.ja.md) 
 
 # Notionでアウトプットした記事をそのままブログとして運用する
 自分の経歴とか強み、弱みなどそのまま就活でPRできるようなポートフォリオとして製作
