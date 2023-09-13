@@ -15,7 +15,7 @@ export function GridSkillsSection() {
   // useEffectフックでAPI Routesにアクセスしてデータを取得する
   useEffect(()=>{
     const fetchSkills = async () => {
-      const response = await fetch('http://localhost:3000/api/skills');
+      const response = await fetch('/api/skills');
       const data = await response.json();
       setSkills(data);
     };
@@ -42,7 +42,7 @@ export function GridSkillsSection() {
                   <Image 
                     src= {`/${skill.path}.png`} 
                     alt={skill.path} 
-                    // objectFit="cover" 
+                    objectFit="cover" 
                     width={200} 
                     height={200} 
                   />
