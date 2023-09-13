@@ -1,0 +1,7 @@
+.diagramContainer {
+  overflow: auto;
+  padding: 2rem;
+  background: #f1f1f1;
+  border-radius: var(--radius);
+  text-align: center;
+}
