@@ -125,6 +125,7 @@ const HeaderAction = ({ tabs }: HeaderActionProps) => {
             <Link href={'/'} >
                 <Image 
                   src= {'/logo_portech.png'}
+                  alt='logo_portech'
                   objectFit="cover" 
                   width={100} 
                   height={100} 
