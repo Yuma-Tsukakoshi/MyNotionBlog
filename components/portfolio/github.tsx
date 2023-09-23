@@ -1,16 +1,21 @@
 "use client";
 import { ActionIcon } from '@mantine/core';
 import { GithubIcon } from '@mantine/ds';
+import { Center , Container } from '@mantine/core';
 import Link from 'next/link';
 import Image from "next/image";
 
 
 export function GitHubContibutions() {
   return (
-    <div>
-          <h2 className="flex items-center gap-1 text-lg font-bold">
-            GitHub Contribution calendar
-          </h2>
+    <Container my="md" className="bg-white p-8 pt-2 rounded-2xl drop-shadow-lg">
+          <Center sx={(theme) => ({
+            height: '2.5rem',
+            backgroundImage: theme.fn.gradient(),
+            color: theme.white,
+          })} className="rounded-xl w-1/2 font-bold transform translate-x-1/2 drop-shadow-lg my-5 mb-10">
+            GitHub Contribution Calendar
+          </Center>
           <div className="relative mx-auto h-32 w-full sp:h-20">
             <Link href={'https://github.com/Yuma-Tsukakoshi'} target="_blank" className="relative mx-auto block h-32 w-full cursor-pointer transition-transform duration-300 hover:scale-105 sp:h-20">
               <Image
@@ -23,6 +28,6 @@ export function GitHubContibutions() {
               />
             </Link>
           </div>
-        </div>
+    </Container>
   );
 }
