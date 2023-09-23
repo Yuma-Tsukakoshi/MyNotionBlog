@@ -22,7 +22,7 @@ export function GridSkillsSection() {
     fetchSkills();
   },[]);
   
-  console.log(skills);
+  // console.log(skills);
 
   return (
     <Container my="md" className="bg-white p-8 pt-2 rounded-2xl drop-shadow-lg">
