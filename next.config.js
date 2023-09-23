@@ -30,9 +30,14 @@ if (!DATABASE_ID) {
   )
 }
 
-module.exports = {
+const nextConfig = {
   images: {
-    domains: ['s3.us-west-2.amazonaws.com', 'images.unsplash.com'],
+    domains: [
+      's3.us-west-2.amazonaws.com', 
+      'images.unsplash.com',
+      'github-contributions-api.deno.dev',
+    ],
+    dangerouslyAllowSVG: true, // SVG 画像を許可
   },
 
   outputFileTracing: false,
@@ -40,4 +45,18 @@ module.exports = {
   experimental: {
     appDir: true,
   },
-}
+};
+
+
+module.exports = {
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/i,
+      issuer: /\.[jt]sx?$/,
+      use: ['@svgr/webpack'],
+    });
+
+    return config;
+  },
+  ...nextConfig,
+};

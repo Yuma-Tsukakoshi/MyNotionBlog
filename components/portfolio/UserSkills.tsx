@@ -22,7 +22,7 @@ export function GridSkillsSection() {
     fetchSkills();
   },[]);
   
-  console.log(skills);
+  // console.log(skills);
 
   return (
     <Container my="md" className="bg-white p-8 pt-2 rounded-2xl drop-shadow-lg">
@@ -31,7 +31,7 @@ export function GridSkillsSection() {
             backgroundImage: theme.fn.gradient(),
             color: theme.white,
           })} className="rounded-xl w-1/2 font-bold transform translate-x-1/2 drop-shadow-lg my-5 mb-10">
-          スキル
+          My Skills
       </Center>
       <Grid className="gap-2 flex justify-evenly">
           {/* ゆくゆくはプロフィールから自分が選んだものだけ（idとかでstate維持） */}

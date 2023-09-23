@@ -50,7 +50,7 @@ function Feature({ title, description, className, ...others }: FeatureProps) {
 // 他に、ログイン以外の人は別のページにする あくまでこのページにはログインユーザーのみ
 const usergoal = [
     {
-    title: '今後の目標 【 展望 】',
+    title: '【 Future Goals 】~Charting a Vision~',
     description:
       'Thought to have gone extinct, Relicanth was given a name that is a variation of the name of the person who discovered.Thought to have gone extinct, Relicanth was given a name that is a variation of the name of the person who discovered.Thought to have gone extinct, Relicanth was given a name that is a variation of the name of the person who discovered.',
   },
@@ -58,12 +58,12 @@ const usergoal = [
 
 const identity = [
   {
-    title: '活かしたいこと【 強み 】',
+    title: '【 Strengths 】',
     description:
       'As electricity builds up inside its body, it becomes more aggressive. One theory is that the electricity. As electricity builds up inside its body, it becomes more aggressive. One theory is that the electricity.As electricity builds up inside its body, it becomes more aggressive. One theory is that the electricity.',
   },
   {
-    title: '克服したいこと【 弱み 】',
+    title: '【 Weaknesses 】',
     description:
       'Slakoth’s heart beats just once a minute. Whatever happens, it is content to loaf around motionless.As electricity builds up inside its body, it becomes more aggressive. One theory is that the electricity.As electricity builds up inside its body, it becomes more aggressive. One theory is that the electricity.',
   },

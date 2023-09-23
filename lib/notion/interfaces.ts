@@ -7,6 +7,10 @@ export interface Post {
   Excerpt: string
   OGImage: string
   Rank: number
+
+  // category追加
+  // Category: string
+  // CategoryColor: string
 }
 
 export interface Block {
