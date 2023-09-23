@@ -14,7 +14,7 @@ import {
   PostDate,
   PostExcerpt,
   PostTags,
-  PostCategory,
+  // PostCategory,
   PostTitle,
   ReadMoreLink,
 } from '../../components/blog-parts'
