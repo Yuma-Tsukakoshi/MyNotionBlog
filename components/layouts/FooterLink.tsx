@@ -4,6 +4,7 @@ import { createStyles, Container, Group, ActionIcon, rem } from '@mantine/core';
 import { IconBrandInstagram  } from '@tabler/icons-react';
 import { MantineLogo , GithubIcon} from '@mantine/ds';
 import Link from 'next/link';
+import Image from "next/image";
 
 const useStyles = createStyles((theme) => ({
   footer: { 
@@ -38,7 +39,14 @@ const FooterLink = () => {
   return (
     <div className={classes.footer}>
       <Container className={classes.inner}>
-        <MantineLogo size={28} />
+        <Link href={'/'} >
+          <Image 
+            src= {'/logo_portech.png'}
+            objectFit="cover" 
+            width={100} 
+            height={100} 
+          />
+        </Link>
         <Group spacing={0} className={classes.links} position="right" noWrap>
           <ActionIcon size="lg">
             <GithubIcon size={20} />
