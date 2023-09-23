@@ -808,6 +808,10 @@ function _buildPost(pageObject: responses.PageObject): Post {
     OGImage:
       prop.OGImage.files.length > 0 ? prop.OGImage.files[0].file.url : null,
     Rank: prop.Rank.number,
+
+    // カテゴリー追加
+    // Category: prop.Category.select.name,
+    // CategoryColor: prop.Category.select.color,
   }
 
   return post

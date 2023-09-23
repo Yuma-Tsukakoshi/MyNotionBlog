@@ -29,6 +29,7 @@ import {
 import { MantineLogo } from '@mantine/ds';
 import React from 'react';
 import Link from 'next/link';
+import Image from "next/image";
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -121,8 +122,14 @@ const HeaderAction = ({ tabs }: HeaderActionProps) => {
       <div className={classes.header}>
         <Container className={classes.mainSection}>
           <Group position="apart">
-            <MantineLogo size={28} />
-  
+            <Link href={'/'} >
+                <Image 
+                  src= {'/logo_portech.png'}
+                  objectFit="cover" 
+                  width={100} 
+                  height={100} 
+                />
+            </Link>
             <Burger opened={opened} onClick={toggle} className={classes.burger} size="sm" />
   
             <Menu

@@ -156,3 +156,10 @@ export const PostsNotFound = () => (
     Woops! did not find the posts, redirecting you back to the blog index
   </div>
 )
+
+// カテゴリー部分追加
+export const PostCategory = ({ post }) => (
+  <div className={`${post.CategoryColor}`}>
+    <p>{post.Category ? post.Category : ''}</p>
+  </div>
+)
