@@ -808,8 +808,11 @@ function _buildPost(pageObject: responses.PageObject): Post {
     OGImage:
       prop.OGImage.files.length > 0 ? prop.OGImage.files[0].file.url : null,
     Rank: prop.Rank.number,
+    // likeプロパティ追加
+    Like: prop.Like.number,
 
     // カテゴリー追加
+    // Category: prop.Category.select,
     // Category: prop.Category.select.name,
     // CategoryColor: prop.Category.select.color,
   }
@@ -854,3 +857,20 @@ function _buildRichText(richTextObject: responses.RichTextObject): RichText {
 
   return richText
 }
+
+// likeの総数を加算する関数を追加
+export async function incrementLikes(post:Post) {
+  const result = await client.pages.update({
+    page_id: post.PageId,
+    properties: {
+      'Like': (post.Like || 0) + 1,
+    },
+  })
+
+  if (!result) {
+    return null
+  }
+
+  return _buildPost(result)
+}
+

@@ -14,7 +14,7 @@ import {
   PostDate,
   PostExcerpt,
   PostTags,
-  // PostCategory,
+  PostCategory,
   PostTitle,
   ReadMoreLink,
 } from '../../components/blog-parts'
@@ -93,7 +93,7 @@ const BlogPage = async () => {
 
         <div className={styles.subContent}>
           <BlogPostLink heading="Recommended" posts={rankedPosts} />
-          <BlogTagLink heading="Categories" tags={tags} />
+          <BlogTagLink heading="Tags" tags={tags} />
         </div>
       </div>
     </>

@@ -7,10 +7,12 @@ export interface Post {
   Excerpt: string
   OGImage: string
   Rank: number
+  // like追加
+  Like: number
 
   // category追加
-  // Category: string
-  // CategoryColor: string
+//   Category: string
+//   CategoryColor: string
 }
 
 export interface Block {
