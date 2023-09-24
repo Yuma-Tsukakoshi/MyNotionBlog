@@ -159,7 +159,25 @@ export const PostsNotFound = () => (
 
 // カテゴリー部分追加
 export const PostCategory = ({ post }) => (
-  <div className={`${post.CategoryColor}`}>
-    <p>{post.Category ? post.Category : ''}</p>
+  <div>
+    <p>{post.name ? post.name : ''}</p>
   </div>
 )
+
+// export const PostCategory = ({ post }) => (
+//   <div className={`${post.CategoryColor}`}>
+//     <p>{post.Category ? post.Category : ''}</p>
+//   </div>
+// )
+
+// export const PostTags = ({ post }) => (
+//   <div className={styles.postTags}>
+//     {post.Tags &&
+//       post.Tags.length > 0 &&
+//       post.Tags.map((tag: SelectProperty) => (
+//         <Link href={getTagLink(tag.name)} className={`tag ${colorClass(tag.color)}`} key={tag.name}>
+//           {tag.name}
+//         </Link>
+//       ))}
+//   </div>
+// )

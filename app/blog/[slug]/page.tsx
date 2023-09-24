@@ -28,6 +28,9 @@ import {
   getAllBlocksByBlockId,
 } from '../../../lib/notion/client'
 
+// likeコンポーネントを追加
+import LikeButton from '../../../components/like-button'
+
 export const revalidate = 30
 
 export async function generateMetadata({ params }): Promise<Metadata> {
@@ -115,6 +118,10 @@ const BlogSlugPage = async ({ params: { slug } }) => {
                   id={post.Slug}
                 />
               )}
+
+              {/* likeコンポーネントの追加 */}
+              <LikeButton slug={post.Slug} />
+              <p>いいね数 : {post.Like}</p>
             </footer>
           </div>
         </div>
@@ -126,7 +133,7 @@ const BlogSlugPage = async ({ params: { slug } }) => {
           />
           <BlogPostLink heading="Recommended" posts={rankedPosts} />
           <BlogPostLink heading="Latest posts" posts={recentPosts} />
-          <BlogTagLink heading="Categories" tags={tags} />
+          <BlogTagLink heading="Tags" tags={tags} />
         </div>
       </div>
     </>

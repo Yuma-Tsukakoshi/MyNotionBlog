@@ -7,9 +7,11 @@ export interface Post {
   Excerpt: string
   OGImage: string
   Rank: number
+  // like追加
+  Like: number
 
-  // category追加
-  // Category: string
+  // category追加 ⇒ 型をstringからSelectPropertyに変更
+  Category: SelectProperty
   // CategoryColor: string
 }
 
