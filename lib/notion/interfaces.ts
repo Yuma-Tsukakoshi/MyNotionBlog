@@ -10,9 +10,9 @@ export interface Post {
   // like追加
   Like: number
 
-  // category追加
-//   Category: string
-//   CategoryColor: string
+  // category追加 ⇒ 型をstringからSelectPropertyに変更
+  Category: SelectProperty
+  // CategoryColor: string
 }
 
 export interface Block {

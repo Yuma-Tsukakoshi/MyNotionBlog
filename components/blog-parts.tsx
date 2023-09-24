@@ -159,10 +159,16 @@ export const PostsNotFound = () => (
 
 // カテゴリー部分追加
 export const PostCategory = ({ post }) => (
-  <div className={`${post.CategoryColor}`}>
-    <p>{post.Category ? post.Category : ''}</p>
+  <div>
+    <p>{post.name ? post.name : ''}</p>
   </div>
 )
+
+// export const PostCategory = ({ post }) => (
+//   <div className={`${post.CategoryColor}`}>
+//     <p>{post.Category ? post.Category : ''}</p>
+//   </div>
+// )
 
 // export const PostTags = ({ post }) => (
 //   <div className={styles.postTags}>

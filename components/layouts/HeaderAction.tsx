@@ -156,7 +156,7 @@ const HeaderAction = ({ tabs }: HeaderActionProps) => {
               </Menu.Target>
               {/* ログインユーザーの詳細表示 */}
               <Menu.Dropdown>
-                <Menu.Item
+                {/* <Menu.Item
                   icon={<IconHeart size="0.9rem" color={theme.colors.red[6]} stroke={1.5} />}
                 >
                   いいねした記事
@@ -170,7 +170,7 @@ const HeaderAction = ({ tabs }: HeaderActionProps) => {
                   icon={<IconMessage size="0.9rem" color={theme.colors.blue[6]} stroke={1.5} />}
                 >
                   コメントした記事
-                </Menu.Item>
+                </Menu.Item> */}
   
                 <Menu.Label>設定</Menu.Label>
                 <Menu.Item icon={<IconSettings size="0.9rem" stroke={1.5} />}>

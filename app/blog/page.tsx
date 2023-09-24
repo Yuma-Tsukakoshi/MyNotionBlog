@@ -77,7 +77,7 @@ const BlogPage = async () => {
             return (
               <div className={styles.post} key={post.Slug}>
                 <PostDate post={post} />
-                {/* <PostCategory post={post} /> */}
+                <PostCategory post={post} />
                 <PostTags post={post} />
                 <PostTitle post={post} />
                 <PostExcerpt post={post} />

@@ -812,8 +812,7 @@ function _buildPost(pageObject: responses.PageObject): Post {
     Like: prop.Like.number,
 
     // カテゴリー追加
-    // Category: prop.Category.select,
-    // Category: prop.Category.select.name,
+    Category: prop.Category.select,
     // CategoryColor: prop.Category.select.color,
   }
 
