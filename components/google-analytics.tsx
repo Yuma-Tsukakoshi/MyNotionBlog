@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
-import { usePathname, useSearchParams } from "next/navigation"
+import { usePathname, useSearchParams } from 'next/navigation'
 import Script from 'next/script'
 import * as gtag from '../lib/gtag'
 import { NEXT_PUBLIC_GA_TRACKING_ID } from '../app/server-constants'

@@ -1,10 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-import {
-  Post,
-  SelectProperty,
-} from '../lib/notion/interfaces'
+import { Post, SelectProperty } from '../lib/notion/interfaces'
 import NotionBlocks, { colorClass } from './notion-block'
 import {
   getBeforeLink,
@@ -28,9 +25,7 @@ export const PostTitle = ({ post, enableLink = true }) => {
   return (
     <h3 className={styles.postTitle}>
       {enableLink ? (
-        <Link href={getBlogLink(post.Slug)}>
-          {postTitle}
-        </Link>
+        <Link href={getBlogLink(post.Slug)}>{postTitle}</Link>
       ) : (
         postTitle
       )}
@@ -43,7 +38,11 @@ export const PostTags = ({ post }) => (
     {post.Tags &&
       post.Tags.length > 0 &&
       post.Tags.map((tag: SelectProperty) => (
-        <Link href={getTagLink(tag.name)} className={`tag ${colorClass(tag.color)}`} key={tag.name}>
+        <Link
+          href={getTagLink(tag.name)}
+          className={`tag ${colorClass(tag.color)}`}
+          key={tag.name}
+        >
           {tag.name}
         </Link>
       ))}
@@ -123,9 +122,7 @@ export const PostLinkList = ({ posts }) => {
       {posts.map((post: Post) => {
         return (
           <li key={post.Slug}>
-            <Link href={getBlogLink(post.Slug)}>
-              {post.Title}
-            </Link>
+            <Link href={getBlogLink(post.Slug)}>{post.Title}</Link>
           </li>
         )
       })}
@@ -141,7 +138,10 @@ export const TagLinkList = ({ tags }) => {
       {tags.map((tag: SelectProperty) => {
         return (
           <li key={tag.name}>
-            <Link href={getTagLink(tag.name)} className={`tag ${colorClass(tag.color)}`}>
+            <Link
+              href={getTagLink(tag.name)}
+              className={`tag ${colorClass(tag.color)}`}
+            >
               {tag.name}
             </Link>
           </li>

@@ -1,6 +1,6 @@
 'use client'
 
-import { usePathname } from "next/navigation"
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { NEXT_PUBLIC_SITE_TITLE } from '../app/server-constants'
 import styles from '../styles/header.module.css'
@@ -21,9 +21,7 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <h1>
-        <Link href="/">
-          {NEXT_PUBLIC_SITE_TITLE}
-        </Link>
+        <Link href="/">{NEXT_PUBLIC_SITE_TITLE}</Link>
       </h1>
 
       <ul>

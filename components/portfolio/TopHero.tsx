@@ -1,6 +1,14 @@
-"use client";
+'use client'
 
-import { createStyles, Overlay, Container, Title, Button, Text, rem } from '@mantine/core';
+import {
+  createStyles,
+  Overlay,
+  Container,
+  Title,
+  Button,
+  Text,
+  rem,
+} from '@mantine/core'
 
 const useStyles = createStyles((theme) => ({
   hero: {
@@ -61,10 +69,10 @@ const useStyles = createStyles((theme) => ({
       width: '100%',
     },
   },
-}));
+}))
 
 export function HeroContentLeft() {
-  const { classes } = useStyles();
+  const { classes } = useStyles()
 
   return (
     <div className={classes.hero}>
@@ -74,16 +82,24 @@ export function HeroContentLeft() {
         zIndex={0}
       />
       <Container className={classes.container}>
-        <Title className={classes.title}>A fully featured React components library</Title>
+        <Title className={classes.title}>
+          A fully featured React components library
+        </Title>
         <Text className={classes.description} size="xl" mt="xl">
-          Build fully functional accessible web applications faster than ever – Mantine includes
-          more than 120 customizable components and hooks to cover you in any situation
+          Build fully functional accessible web applications faster than ever –
+          Mantine includes more than 120 customizable components and hooks to
+          cover you in any situation
         </Text>
 
-        <Button variant="gradient" size="xl" radius="xl" className={classes.control}>
+        <Button
+          variant="gradient"
+          size="xl"
+          radius="xl"
+          className={classes.control}
+        >
           Get started
         </Button>
       </Container>
     </div>
-  );
+  )
 }

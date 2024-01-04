@@ -5,9 +5,16 @@ import metascraperDescription from 'metascraper-description'
 import metascraperImage from 'metascraper-image'
 import metascraperTitle from 'metascraper-title'
 
-const metascraper = createMetascraper([metascraperDescription(), metascraperImage(), metascraperTitle()])
+const metascraper = createMetascraper([
+  metascraperDescription(),
+  metascraperImage(),
+  metascraperTitle(),
+])
 
-const ApiUrlMetadata = async function(req: NextApiRequest, res: NextApiResponse) {
+const ApiUrlMetadata = async function (
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   res.setHeader('Content-Type', 'application/json')
 
   if (req.method !== 'GET') {

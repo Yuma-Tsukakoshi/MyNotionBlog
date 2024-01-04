@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import {
   createStyles,
@@ -12,12 +12,13 @@ import {
   Avatar,
   Badge,
   rem,
-} from '@mantine/core';
-import { IconHeart, IconBookmark, IconShare } from '@tabler/icons-react';
+} from '@mantine/core'
+import { IconHeart, IconBookmark, IconShare } from '@tabler/icons-react'
 
 const useStyles = createStyles((theme) => ({
   card: {
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
+    backgroundColor:
+      theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
   },
 
   title: {
@@ -31,18 +32,18 @@ const useStyles = createStyles((theme) => ({
       theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[2]
     }`,
   },
-}));
+}))
 
 interface ArticleCardFooterProps {
-  image: string;
-  category: string;
-  title: string;
-  footer: string;
+  image: string
+  category: string
+  title: string
+  footer: string
   author: {
-    name: string;
-    description: string;
-    image: string;
-  };
+    name: string
+    description: string
+    image: string
+  }
 }
 
 export function ArticleCard({
@@ -52,7 +53,7 @@ export function ArticleCard({
   footer,
   author,
 }: ArticleCardFooterProps) {
-  const { classes, theme } = useStyles();
+  const { classes, theme } = useStyles()
 
   return (
     <Card withBorder padding="lg" radius="md" className={classes.card}>
@@ -83,17 +84,29 @@ export function ArticleCard({
           </Text>
           <Group spacing={0}>
             <ActionIcon>
-              <IconHeart size="1.2rem" color={theme.colors.red[6]} stroke={1.5} />
+              <IconHeart
+                size="1.2rem"
+                color={theme.colors.red[6]}
+                stroke={1.5}
+              />
             </ActionIcon>
             <ActionIcon>
-              <IconBookmark size="1.2rem" color={theme.colors.yellow[6]} stroke={1.5} />
+              <IconBookmark
+                size="1.2rem"
+                color={theme.colors.yellow[6]}
+                stroke={1.5}
+              />
             </ActionIcon>
             <ActionIcon>
-              <IconShare size="1.2rem" color={theme.colors.blue[6]} stroke={1.5} />
+              <IconShare
+                size="1.2rem"
+                color={theme.colors.blue[6]}
+                stroke={1.5}
+              />
             </ActionIcon>
           </Group>
         </Group>
       </Card.Section>
     </Card>
-  );
+  )
 }

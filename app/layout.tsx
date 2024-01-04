@@ -1,8 +1,8 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import HeaderAction from '../components/layouts/HeaderAction';
-import FooterLinks from '../components/layouts/FooterLink';
+import HeaderAction from '../components/layouts/HeaderAction'
+import FooterLinks from '../components/layouts/FooterLink'
 import '../styles/global.css'
 import '../styles/syntax-coloring.css'
 import styles from '../styles/shared.module.css'
@@ -22,8 +22,7 @@ const tabs = [
     link: 'blog',
     label: 'TechBlog',
   },
-];
-
+]
 
 export const metadata: Metadata = {
   title: 'NotionBlog',
@@ -39,11 +38,9 @@ export default function RootLayout({
     <html lang="ja">
       <body className={inter.className}>
         <div className={styles.container}>
-            <HeaderAction {...{ tabs }} />
-              <div className={styles.content}>
-                {children}
-              </div>
-            <FooterLinks /> 
+          <HeaderAction {...{ tabs }} />
+          <div className={styles.content}>{children}</div>
+          <FooterLinks />
         </div>
       </body>
     </html>

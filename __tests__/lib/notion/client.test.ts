@@ -6,21 +6,24 @@ import {
   getAllTags,
 } from '../../../lib/notion/client'
 
-import {
-  Post,
-  Block,
-  Annotation,
-} from '../../../lib/notion/interfaces'
+import { Post, Block, Annotation } from '../../../lib/notion/interfaces'
 
 describe('getPosts', () => {
   const expected: Post[] = [
     {
-      PageId: "ed0090ef-628c-4cfd-a8ea-1a5326855f8a",
-      Title: "あのイーハトーヴォのすきとおった風",
-      Slug: "ihatov",
-      Date: "2021-11-06",
-      Tags: [{name: "Diary", id: "ed0090ef-628c-4cfd-a8ea-1a5326855f8a", color: "default"}],
-      Excerpt: "あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。",
+      PageId: 'ed0090ef-628c-4cfd-a8ea-1a5326855f8a',
+      Title: 'あのイーハトーヴォのすきとおった風',
+      Slug: 'ihatov',
+      Date: '2021-11-06',
+      Tags: [
+        {
+          name: 'Diary',
+          id: 'ed0090ef-628c-4cfd-a8ea-1a5326855f8a',
+          color: 'default',
+        },
+      ],
+      Excerpt:
+        'あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。',
       OGImage: null,
       Rank: 3,
     },
@@ -65,7 +68,7 @@ describe('getAllBlocksByBlockId', () => {
               },
             },
             Href: 'https://github.com/otoyo/easy-notion-blog',
-          }
+          },
         ],
         Color: 'default',
       },
@@ -89,14 +92,16 @@ describe('getAllBlocksByBlockId', () => {
             Equation: {
               Expression: 'e=mc^2',
             },
-          }
+          },
         ],
         Color: 'default',
       },
     }
 
     const blocks = await getAllBlocksByBlockId(pageBlockId)
-    const paragraph = blocks.filter((block: Block) => block.Type === 'paragraph')[1]
+    const paragraph = blocks.filter(
+      (block: Block) => block.Type === 'paragraph'
+    )[1]
     expect(paragraph).toMatchObject(expected)
   })
 
@@ -109,8 +114,8 @@ describe('getAllBlocksByBlockId', () => {
         RichTexts: [
           {
             Annotation: annotation,
-            PlainText: 'Heading 1'
-          }
+            PlainText: 'Heading 1',
+          },
         ],
         Color: 'default',
         IsToggleable: false,
@@ -131,8 +136,8 @@ describe('getAllBlocksByBlockId', () => {
         RichTexts: [
           {
             Annotation: annotation,
-            PlainText: 'Heading 2'
-          }
+            PlainText: 'Heading 2',
+          },
         ],
         Color: 'default',
         IsToggleable: false,
@@ -153,8 +158,8 @@ describe('getAllBlocksByBlockId', () => {
         RichTexts: [
           {
             Annotation: annotation,
-            PlainText: 'Heading 3'
-          }
+            PlainText: 'Heading 3',
+          },
         ],
         Color: 'default',
         IsToggleable: false,
@@ -176,8 +181,8 @@ describe('getAllBlocksByBlockId', () => {
           RichTexts: [
             {
               Annotation: annotation,
-              PlainText: 'Bulleted List Item 1'
-            }
+              PlainText: 'Bulleted List Item 1',
+            },
           ],
           Color: 'default',
         },
@@ -190,8 +195,8 @@ describe('getAllBlocksByBlockId', () => {
           RichTexts: [
             {
               Annotation: annotation,
-              PlainText: 'Bulleted List Item 2'
-            }
+              PlainText: 'Bulleted List Item 2',
+            },
           ],
           Color: 'default',
         },
@@ -199,7 +204,9 @@ describe('getAllBlocksByBlockId', () => {
     ]
 
     const blocks = await getAllBlocksByBlockId(pageBlockId)
-    const bulletedListItems = blocks.filter((block: Block) => block.Type === 'bulleted_list_item')
+    const bulletedListItems = blocks.filter(
+      (block: Block) => block.Type === 'bulleted_list_item'
+    )
     expect(bulletedListItems).toMatchObject(expected)
   })
 
@@ -213,8 +220,8 @@ describe('getAllBlocksByBlockId', () => {
           RichTexts: [
             {
               Annotation: annotation,
-              PlainText: 'Numbered List Item 1'
-            }
+              PlainText: 'Numbered List Item 1',
+            },
           ],
           Color: 'default',
         },
@@ -227,8 +234,8 @@ describe('getAllBlocksByBlockId', () => {
           RichTexts: [
             {
               Annotation: annotation,
-              PlainText: 'Numbered List Item 2'
-            }
+              PlainText: 'Numbered List Item 2',
+            },
           ],
           Color: 'default',
         },
@@ -236,7 +243,9 @@ describe('getAllBlocksByBlockId', () => {
     ]
 
     const blocks = await getAllBlocksByBlockId(pageBlockId)
-    const numberedListItems = blocks.filter((block: Block) => block.Type === 'numbered_list_item')
+    const numberedListItems = blocks.filter(
+      (block: Block) => block.Type === 'numbered_list_item'
+    )
     expect(numberedListItems).toMatchObject(expected)
   })
 
@@ -250,8 +259,8 @@ describe('getAllBlocksByBlockId', () => {
           RichTexts: [
             {
               Annotation: annotation,
-              PlainText: 'To Do 1'
-            }
+              PlainText: 'To Do 1',
+            },
           ],
           Color: 'default',
           Checked: true,
@@ -265,8 +274,8 @@ describe('getAllBlocksByBlockId', () => {
           RichTexts: [
             {
               Annotation: annotation,
-              PlainText: 'To Do 2'
-            }
+              PlainText: 'To Do 2',
+            },
           ],
           Color: 'default',
           Checked: false,
@@ -307,8 +316,8 @@ describe('getAllBlocksByBlockId', () => {
           Caption: [
             {
               Annotation: annotation,
-              PlainText: 'File Image'
-            }
+              PlainText: 'File Image',
+            },
           ],
           Type: 'file',
           File: {
@@ -325,8 +334,8 @@ describe('getAllBlocksByBlockId', () => {
           Caption: [
             {
               Annotation: annotation,
-              PlainText: 'External Image'
-            }
+              PlainText: 'External Image',
+            },
           ],
           Type: 'external',
           External: {
@@ -350,14 +359,14 @@ describe('getAllBlocksByBlockId', () => {
         Caption: [
           {
             Annotation: annotation,
-            PlainText: 'Code'
-          }
+            PlainText: 'Code',
+          },
         ],
         RichTexts: [
           {
             Annotation: annotation,
-            PlainText: "console.log('This is Code Block.')"
-          }
+            PlainText: "console.log('This is Code Block.')",
+          },
         ],
         Language: 'javascript',
       },
@@ -377,8 +386,8 @@ describe('getAllBlocksByBlockId', () => {
         RichTexts: [
           {
             Annotation: annotation,
-            PlainText: 'Quote'
-          }
+            PlainText: 'Quote',
+          },
         ],
         Color: 'default',
       },
@@ -413,8 +422,8 @@ describe('getAllBlocksByBlockId', () => {
         RichTexts: [
           {
             Annotation: annotation,
-            PlainText: 'Callout'
-          }
+            PlainText: 'Callout',
+          },
         ],
         Icon: {
           Emoji: 'ℹ️',
@@ -447,17 +456,19 @@ describe('getAllBlocksByBlockId', () => {
                 {
                   Annotation: annotation,
                   PlainText: 'Synced Block',
-                }
+                },
               ],
               Color: 'default',
             },
-          }
+          },
         ],
       },
     }
 
     const blocks = await getAllBlocksByBlockId(pageBlockId)
-    const syncedBlock = blocks.find((block: Block) => block.Type === 'synced_block')
+    const syncedBlock = blocks.find(
+      (block: Block) => block.Type === 'synced_block'
+    )
     expect(syncedBlock).toMatchObject(expected)
   })
 
@@ -470,8 +481,8 @@ describe('getAllBlocksByBlockId', () => {
         RichTexts: [
           {
             Annotation: annotation,
-            PlainText: 'Toggle'
-          }
+            PlainText: 'Toggle',
+          },
         ],
         Color: 'default',
         Children: [
@@ -484,11 +495,11 @@ describe('getAllBlocksByBlockId', () => {
                 {
                   Annotation: annotation,
                   PlainText: 'Toggle',
-                }
+                },
               ],
               Color: 'default',
             },
-          }
+          },
         ],
       },
     }
@@ -539,7 +550,9 @@ describe('getAllBlocksByBlockId', () => {
     }
 
     const blocks = await getAllBlocksByBlockId(pageBlockId)
-    const linkPreview = blocks.find((block: Block) => block.Type === 'link_preview')
+    const linkPreview = blocks.find(
+      (block: Block) => block.Type === 'link_preview'
+    )
     expect(linkPreview).toMatchObject(expected)
   })
 
@@ -563,7 +576,7 @@ describe('getAllBlocksByBlockId', () => {
                   {
                     Annotation: annotation,
                     PlainText: 'A1',
-                  }
+                  },
                 ],
               },
               {
@@ -571,7 +584,7 @@ describe('getAllBlocksByBlockId', () => {
                   {
                     Annotation: annotation,
                     PlainText: 'B1',
-                  }
+                  },
                 ],
               },
             ],
@@ -586,7 +599,7 @@ describe('getAllBlocksByBlockId', () => {
                   {
                     Annotation: annotation,
                     PlainText: 'A2',
-                  }
+                  },
                 ],
               },
               {
@@ -594,7 +607,7 @@ describe('getAllBlocksByBlockId', () => {
                   {
                     Annotation: annotation,
                     PlainText: 'B2',
-                  }
+                  },
                 ],
               },
             ],
@@ -629,7 +642,7 @@ describe('getAllBlocksByBlockId', () => {
                     {
                       Annotation: annotation,
                       PlainText: 'Column List',
-                    }
+                    },
                   ],
                   Color: 'default',
                 },
@@ -641,7 +654,9 @@ describe('getAllBlocksByBlockId', () => {
     }
 
     const blocks = await getAllBlocksByBlockId(pageBlockId)
-    const columnList = blocks.find((block: Block) => block.Type === 'column_list')
+    const columnList = blocks.find(
+      (block: Block) => block.Type === 'column_list'
+    )
     expect(columnList).toMatchObject(expected)
   })
 
@@ -656,7 +671,9 @@ describe('getAllBlocksByBlockId', () => {
     }
 
     const blocks = await getAllBlocksByBlockId(pageBlockId)
-    const tableOfContents = blocks.find((block: Block) => block.Type === 'table_of_contents')
+    const tableOfContents = blocks.find(
+      (block: Block) => block.Type === 'table_of_contents'
+    )
     expect(tableOfContents).toMatchObject(expected)
   })
 
@@ -681,6 +698,6 @@ describe('getAllTags', () => {
 
   it('resolved 1 tag', async () => {
     const tags = await getAllTags()
-    expect(tags.map(t => t.name)).toEqual(expect.arrayContaining(['Diary']))
+    expect(tags.map((t) => t.name)).toEqual(expect.arrayContaining(['Diary']))
   })
 })

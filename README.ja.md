@@ -10,9 +10,9 @@
 easy-notion-blog を使えばあっという間に Notion Blog を始めることができます。
 
 - :rocket: ページの読み込みが**爆速**
-- :pencil: **自分のNotionで**ブログが書ける
+- :pencil: **自分の Notion で**ブログが書ける
 - :hammer_and_wrench: ブログの見た目を**自分好みにカスタマイズ可能**
-- :white_check_mark: **Notion 公式API**を使っているので安心
+- :white_check_mark: **Notion 公式 API**を使っているので安心
 
 開発が活発な [astro-notion-blog](https://github.com/otoyo/astro-notion-blog) もご検討ください。
 
@@ -22,7 +22,7 @@ easy-notion-blog を使えばあっという間に Notion Blog を始めるこ�
 
 <img src="https://user-images.githubusercontent.com/1063435/201293737-63c0d504-d34b-4500-98ab-808f4d2e89f3.png" width="600">
 
-### :camera_flash: Notion側
+### :camera_flash: Notion 側
 
 <img src="https://user-images.githubusercontent.com/1063435/201301619-54cf07da-e638-4751-b56c-7115ed5d4eb0.png" width="600">
 
@@ -37,11 +37,11 @@ easy-notion-blog を使えばあっという間に Notion Blog を始めるこ�
 ### 手順
 
 1. このリポジトリを**スターします** :wink:
-    * スターしていただけると開発の励みになります
+   - スターしていただけると開発の励みになります
 2. [テンプレート](https://www.notion.so/otoyo/158bd90116004cd19aca26ad88cb5c07?v=a20acca876c2428380e5a2a33db233ed) を自分の Notion へ複製します
 3. 複製したページの URL の `https://notion.so/your-account/<ココ>?v=xxxx` を `DATABASE_ID` としてメモします
-    * 例) `158bd90116004cd19aca26ad88cb5c07`
-    * :warning: **注意:** `?v=ここではありません`。`?v=` の前です。
+   - 例) `158bd90116004cd19aca26ad88cb5c07`
+   - :warning: **注意:** `?v=ここではありません`。`?v=` の前です。
 4. [Create an integration](https://developers.notion.com/docs/create-a-notion-integration#step-1-create-an-integration) からインテグレーションを作成し "Internal Integration Token" を `NOTION_API_SECRET` としてメモします
 5. 複製したページを再度開き [Share a database with your integration](https://developers.notion.com/docs/create-a-notion-integration#step-2-share-a-database-with-your-integration) の手順でインテグレーションにデータベースを共有します
 6. [vercel.com](https://vercel.com/) にログインします

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Prism from 'prismjs'
 import 'prismjs/components/prism-css'
 import 'prismjs/components/prism-diff'
@@ -20,12 +20,14 @@ import Mermaid from './mermaid'
 import { RichText } from '../../lib/notion/interfaces'
 import styles from '../../styles/notion-block.module.css'
 
-
 const Code = ({ block }) => {
   const [state, setState] = useState(false)
-  const code = block.Code.RichTexts.map((richText: RichText) => richText.Text.Content).join('')
+  const code = block.Code.RichTexts.map(
+    (richText: RichText) => richText.Text.Content
+  ).join('')
   const language = block.Code.Language.toLowerCase()
-  const grammer = Prism.languages[language.toLowerCase()] || Prism.languages.javascript
+  const grammer =
+    Prism.languages[language.toLowerCase()] || Prism.languages.javascript
 
   const handleClick = (ev) => {
     navigator.clipboard
@@ -42,7 +44,9 @@ const Code = ({ block }) => {
       ) : (
         <div>
           <div>
-            <button data-code={code} onClick={handleClick}>{state ? 'Copied!' : 'Copy'}</button>
+            <button data-code={code} onClick={handleClick}>
+              {state ? 'Copied!' : 'Copy'}
+            </button>
           </div>
           <pre>
             <code

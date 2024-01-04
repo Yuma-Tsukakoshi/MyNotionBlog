@@ -1,6 +1,13 @@
-"use client";
+'use client'
 
-import { createStyles, Text, SimpleGrid, Container, rem , Center} from '@mantine/core';
+import {
+  createStyles,
+  Text,
+  SimpleGrid,
+  Container,
+  rem,
+  Center,
+} from '@mantine/core'
 
 const useStyles = createStyles((theme) => ({
   feature: {
@@ -22,15 +29,15 @@ const useStyles = createStyles((theme) => ({
     width: '50%',
     transform: 'translateX(50%)',
   },
-}));
+}))
 
 interface FeatureProps extends React.ComponentPropsWithoutRef<'div'> {
-  title: string;
-  description: string;
+  title: string
+  description: string
 }
 
 function Feature({ title, description, className, ...others }: FeatureProps) {
-  const { classes, cx } = useStyles();
+  const { classes, cx } = useStyles()
 
   return (
     <div className={cx(classes.feature, className)} {...others}>
@@ -43,13 +50,13 @@ function Feature({ title, description, className, ...others }: FeatureProps) {
         </Text>
       </div>
     </div>
-  );
+  )
 }
 
 //propsでログインユーザーのものを表示する
 // 他に、ログイン以外の人は別のページにする あくまでこのページにはログインユーザーのみ
 const usergoal = [
-    {
+  {
     title: '【 Future Goals 】~Charting a Vision~',
     description:
       'Thought to have gone extinct, Relicanth was given a name that is a variation of the name of the person who discovered.Thought to have gone extinct, Relicanth was given a name that is a variation of the name of the person who discovered.Thought to have gone extinct, Relicanth was given a name that is a variation of the name of the person who discovered.',
@@ -67,20 +74,38 @@ const identity = [
     description:
       'Slakoth’s heart beats just once a minute. Whatever happens, it is content to loaf around motionless.As electricity builds up inside its body, it becomes more aggressive. One theory is that the electricity.As electricity builds up inside its body, it becomes more aggressive. One theory is that the electricity.',
   },
-];
+]
 
 export function GridIntroduceSection() {
-  const goal = usergoal.map((item) => <Feature {...item} key={item.title} className="drop-shadow-lg" />);
-  const items = identity.map((item) => <Feature {...item} key={item.title} className="mx-1 bg-white p-8 pt-4 rounded-2xl drop-shadow-lg " />);
+  const goal = usergoal.map((item) => (
+    <Feature {...item} key={item.title} className="drop-shadow-lg" />
+  ))
+  const items = identity.map((item) => (
+    <Feature
+      {...item}
+      key={item.title}
+      className="mx-1 bg-white p-8 pt-4 rounded-2xl drop-shadow-lg "
+    />
+  ))
 
   return (
-    <Container my="md" size="lg" className='mx-auto my-10 max-w-62rem'>
-      <SimpleGrid cols={1} breakpoints={[{ maxWidth: 'sm', cols: 1 }]} spacing={50} className = "p-8 pt-4 bg-white rounded-2xl my-10 drop-shadow-lg ">
+    <Container my="md" size="lg" className="mx-auto my-10 max-w-62rem">
+      <SimpleGrid
+        cols={1}
+        breakpoints={[{ maxWidth: 'sm', cols: 1 }]}
+        spacing={50}
+        className="p-8 pt-4 bg-white rounded-2xl my-10 drop-shadow-lg "
+      >
         {goal}
       </SimpleGrid>
-      <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]} spacing={10} className="text-xm">
+      <SimpleGrid
+        cols={2}
+        breakpoints={[{ maxWidth: 'sm', cols: 1 }]}
+        spacing={10}
+        className="text-xm"
+      >
         {items}
       </SimpleGrid>
     </Container>
-  );
+  )
 }

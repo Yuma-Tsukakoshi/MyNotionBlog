@@ -1,5 +1,5 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
+import React from 'react'
+import { createRoot } from 'react-dom/client'
 import DocumentHead from '../../components/document-head'
 
 const mockNextPublicURL = jest.fn()
@@ -17,8 +17,8 @@ beforeEach(() => {
 })
 
 afterEach(() => {
-  document.body.removeChild(container);
-  container = null;
+  document.body.removeChild(container)
+  container = null
 })
 
 describe('DocumentHead', () => {

@@ -1,14 +1,11 @@
 const fs = require('fs')
 const path = require('path')
-const {
-  NOTION_API_SECRET,
-  DATABASE_ID,
-} = require('./app/server-constants')
+const { NOTION_API_SECRET, DATABASE_ID } = require('./app/server-constants')
 
 const warnOrError =
   process.env.NODE_ENV !== 'production' || process.env.GITHUB_ACTIONS
     ? console.warn
-    : msg => {
+    : (msg) => {
         throw new Error(msg)
       }
 
@@ -33,7 +30,7 @@ if (!DATABASE_ID) {
 const nextConfig = {
   images: {
     domains: [
-      's3.us-west-2.amazonaws.com', 
+      's3.us-west-2.amazonaws.com',
       'images.unsplash.com',
       'github-contributions-api.deno.dev',
     ],
@@ -45,8 +42,7 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
-};
-
+}
 
 module.exports = {
   webpack(config) {
@@ -54,9 +50,9 @@ module.exports = {
       test: /\.svg$/i,
       issuer: /\.[jt]sx?$/,
       use: ['@svgr/webpack'],
-    });
+    })
 
-    return config;
+    return config
   },
   ...nextConfig,
-};
+}

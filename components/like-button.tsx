@@ -1,5 +1,5 @@
-"use client";
-import React, { useState } from 'react';
+'use client'
+import React, { useState } from 'react'
 import axios from 'axios'
 
 type Props = {
@@ -16,9 +16,7 @@ const LikeButton = (props: Props) => {
     }
   }
 
-  return (
-    <button onClick={handleClick}>Like</button>
-  )
+  return <button onClick={handleClick}>Like</button>
 }
 
 export default LikeButton
