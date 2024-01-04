@@ -60,11 +60,13 @@ export async function getPosts(pageSize = 10): Promise<Post[]> {
     page_size: pageSize,
   }
 
-  const res: responses.QueryDatabaseResponse = await client.databases.query(params)
+  const res: responses.QueryDatabaseResponse = await client.databases.query(
+    params
+  )
 
   return res.results
-    .filter(pageObject => _validPageObject(pageObject))
-    .map(pageObject => _buildPost(pageObject))
+    .filter((pageObject) => _validPageObject(pageObject))
+    .map((pageObject) => _buildPost(pageObject))
 }
 
 export async function getAllPosts(): Promise<Post[]> {
@@ -88,7 +90,9 @@ export async function getAllPosts(): Promise<Post[]> {
     }
 
     while (true) {
-      const res: responses.QueryDatabaseResponse = await client.databases.query(params)
+      const res: responses.QueryDatabaseResponse = await client.databases.query(
+        params
+      )
 
       results = results.concat(res.results)
 
@@ -101,15 +105,15 @@ export async function getAllPosts(): Promise<Post[]> {
   }
 
   return results
-    .filter(pageObject => _validPageObject(pageObject))
-    .map(pageObject => _buildPost(pageObject))
+    .filter((pageObject) => _validPageObject(pageObject))
+    .map((pageObject) => _buildPost(pageObject))
 }
 
 export async function getRankedPosts(pageSize = 10): Promise<Post[]> {
   if (blogIndexCache.exists()) {
     const allPosts = await getAllPosts()
     return allPosts
-      .filter(post => !!post.Rank)
+      .filter((post) => !!post.Rank)
       .sort((a, b) => {
         if (a.Rank > b.Rank) {
           return -1
@@ -140,17 +144,22 @@ export async function getRankedPosts(pageSize = 10): Promise<Post[]> {
     page_size: pageSize,
   }
 
-  const res: responses.QueryDatabaseResponse = await client.databases.query(params)
+  const res: responses.QueryDatabaseResponse = await client.databases.query(
+    params
+  )
 
   return res.results
-    .filter(pageObject => _validPageObject(pageObject))
-    .map(pageObject => _buildPost(pageObject))
+    .filter((pageObject) => _validPageObject(pageObject))
+    .map((pageObject) => _buildPost(pageObject))
 }
 
-export async function getPostsBefore(date: string, pageSize = 10): Promise<Post[]> {
+export async function getPostsBefore(
+  date: string,
+  pageSize = 10
+): Promise<Post[]> {
   if (blogIndexCache.exists()) {
     const allPosts = await getAllPosts()
-    return allPosts.filter(post => post.Date < date).slice(0, pageSize)
+    return allPosts.filter((post) => post.Date < date).slice(0, pageSize)
   }
 
   const params = {
@@ -173,14 +182,16 @@ export async function getPostsBefore(date: string, pageSize = 10): Promise<Post[
     page_size: pageSize,
   }
 
-  const res: responses.QueryDatabaseResponse = await client.databases.query(params)
+  const res: responses.QueryDatabaseResponse = await client.databases.query(
+    params
+  )
 
   return res.results
-    .filter(pageObject => _validPageObject(pageObject))
-    .map(pageObject => _buildPost(pageObject))
+    .filter((pageObject) => _validPageObject(pageObject))
+    .map((pageObject) => _buildPost(pageObject))
 }
 
-export async function getFirstPost(): Promise<Post|null> {
+export async function getFirstPost(): Promise<Post | null> {
   if (blogIndexCache.exists()) {
     const allPosts = await getAllPosts()
     return allPosts[allPosts.length - 1]
@@ -199,7 +210,9 @@ export async function getFirstPost(): Promise<Post|null> {
     page_size: 1,
   }
 
-  const res: responses.QueryDatabaseResponse = await client.databases.query(params)
+  const res: responses.QueryDatabaseResponse = await client.databases.query(
+    params
+  )
 
   if (!res.results.length) {
     return null
@@ -212,10 +225,10 @@ export async function getFirstPost(): Promise<Post|null> {
   return _buildPost(res.results[0])
 }
 
-export async function getPostBySlug(slug: string): Promise<Post|null> {
+export async function getPostBySlug(slug: string): Promise<Post | null> {
   if (blogIndexCache.exists()) {
     const allPosts = await getAllPosts()
-    return allPosts.find(post => post.Slug === slug)
+    return allPosts.find((post) => post.Slug === slug)
   }
 
   const res: responses.QueryDatabaseResponse = await client.databases.query({
@@ -248,12 +261,17 @@ export async function getPostBySlug(slug: string): Promise<Post|null> {
   return _buildPost(res.results[0])
 }
 
-export async function getPostsByTag(tagName: string | undefined, pageSize = 100): Promise<Post[]> {
+export async function getPostsByTag(
+  tagName: string | undefined,
+  pageSize = 100
+): Promise<Post[]> {
   if (!tagName) return []
 
   if (blogIndexCache.exists()) {
     const allPosts = await getAllPosts()
-    return allPosts.filter(post => post.Tags.map(t => t.name).includes(tagName)).slice(0, pageSize)
+    return allPosts
+      .filter((post) => post.Tags.map((t) => t.name).includes(tagName))
+      .slice(0, pageSize)
   }
 
   const params = {
@@ -276,11 +294,13 @@ export async function getPostsByTag(tagName: string | undefined, pageSize = 100)
     page_size: pageSize,
   }
 
-  const res: responses.QueryDatabaseResponse = await client.databases.query(params)
+  const res: responses.QueryDatabaseResponse = await client.databases.query(
+    params
+  )
 
   return res.results
-    .filter(pageObject => _validPageObject(pageObject))
-    .map(pageObject => _buildPost(pageObject))
+    .filter((pageObject) => _validPageObject(pageObject))
+    .map((pageObject) => _buildPost(pageObject))
 }
 
 export async function getPostsByTagBefore(
@@ -291,8 +311,11 @@ export async function getPostsByTagBefore(
   if (blogIndexCache.exists()) {
     const allPosts = await getAllPosts()
     return allPosts
-      .filter(post => {
-        return post.Tags.map(t => t.name).includes(tagName) && new Date(post.Date) < new Date(date)
+      .filter((post) => {
+        return (
+          post.Tags.map((t) => t.name).includes(tagName) &&
+          new Date(post.Date) < new Date(date)
+        )
       })
       .slice(0, pageSize)
   }
@@ -323,17 +346,21 @@ export async function getPostsByTagBefore(
     page_size: pageSize,
   }
 
-  const res: responses.QueryDatabaseResponse = await client.databases.query(params)
+  const res: responses.QueryDatabaseResponse = await client.databases.query(
+    params
+  )
 
   return res.results
-    .filter(pageObject => _validPageObject(pageObject))
-    .map(pageObject => _buildPost(pageObject))
+    .filter((pageObject) => _validPageObject(pageObject))
+    .map((pageObject) => _buildPost(pageObject))
 }
 
-export async function getFirstPostByTag(tagName: string): Promise<Post|null> {
+export async function getFirstPostByTag(tagName: string): Promise<Post | null> {
   if (blogIndexCache.exists()) {
     const allPosts = await getAllPosts()
-    const sameTagPosts = allPosts.filter(post => post.Tags.map(t => t.name).includes(tagName))
+    const sameTagPosts = allPosts.filter((post) =>
+      post.Tags.map((t) => t.name).includes(tagName)
+    )
     return sameTagPosts[sameTagPosts.length - 1]
   }
 
@@ -357,7 +384,9 @@ export async function getFirstPostByTag(tagName: string): Promise<Post|null> {
     page_size: 1,
   }
 
-  const res: responses.QueryDatabaseResponse = await client.databases.query(params)
+  const res: responses.QueryDatabaseResponse = await client.databases.query(
+    params
+  )
 
   if (!res.results.length) {
     return null
@@ -378,9 +407,10 @@ export async function getAllBlocksByBlockId(blockId: string): Promise<Block[]> {
   }
 
   while (true) {
-    const res: responses.RetrieveBlockChildrenResponse = await client.blocks.children.list(params)
+    const res: responses.RetrieveBlockChildrenResponse =
+      await client.blocks.children.list(params)
 
-    const blocks = res.results.map(blockObject => _buildBlock(blockObject))
+    const blocks = res.results.map((blockObject) => _buildBlock(blockObject))
 
     allBlocks = allBlocks.concat(blocks)
 
@@ -522,7 +552,10 @@ function _buildBlock(blockObject: responses.BlockObject): Block {
       if (blockObject.image.type === 'external') {
         image.External = { Url: blockObject.image.external.url }
       } else {
-        image.File = { Url: blockObject.image.file.url, ExpiryTime: blockObject.image.file.expiry_time }
+        image.File = {
+          Url: blockObject.image.file.url,
+          ExpiryTime: blockObject.image.file.expiry_time,
+        }
       }
 
       block.Image = image
@@ -564,7 +597,10 @@ function _buildBlock(blockObject: responses.BlockObject): Block {
       break
     case 'synced_block':
       let syncedFrom: SyncedFrom = null
-      if (blockObject[blockObject.type].synced_from && blockObject[blockObject.type].synced_from.block_id) {
+      if (
+        blockObject[blockObject.type].synced_from &&
+        blockObject[blockObject.type].synced_from.block_id
+      ) {
         syncedFrom = {
           BlockId: blockObject[blockObject.type].synced_from.block_id,
         }
@@ -643,18 +679,19 @@ async function _getTableRows(blockId: string): Promise<TableRow[]> {
   }
 
   while (true) {
-    const res: responses.RetrieveBlockChildrenResponse = await client.blocks.children.list(params)
+    const res: responses.RetrieveBlockChildrenResponse =
+      await client.blocks.children.list(params)
 
-    const blocks = res.results.map(blockObject => {
+    const blocks = res.results.map((blockObject) => {
       const tableRow: TableRow = {
         Id: blockObject.id,
         Type: blockObject.type,
         HasChildren: blockObject.has_children,
-        Cells: []
+        Cells: [],
       }
 
       if (blockObject.type === 'table_row') {
-        const cells: TableCell[] = blockObject.table_row.cells.map(cell => {
+        const cells: TableCell[] = blockObject.table_row.cells.map((cell) => {
           const tableCell: TableCell = {
             RichTexts: cell.map(_buildRichText),
           }
@@ -688,20 +725,23 @@ async function _getColumns(blockId: string): Promise<Column[]> {
   }
 
   while (true) {
-    const res: responses.RetrieveBlockChildrenResponse = await client.blocks.children.list(params)
+    const res: responses.RetrieveBlockChildrenResponse =
+      await client.blocks.children.list(params)
 
-    const blocks = await Promise.all(res.results.map(async blockObject => {
-      const children = await getAllBlocksByBlockId(blockObject.id)
+    const blocks = await Promise.all(
+      res.results.map(async (blockObject) => {
+        const children = await getAllBlocksByBlockId(blockObject.id)
 
-      const column: Column = {
-        Id: blockObject.id,
-        Type: blockObject.type,
-        HasChildren: blockObject.has_children,
-        Children: children,
-      }
+        const column: Column = {
+          Id: blockObject.id,
+          Type: blockObject.type,
+          HasChildren: blockObject.has_children,
+          Children: children,
+        }
 
-      return column
-    }))
+        return column
+      })
+    )
 
     columns = columns.concat(blocks)
 
@@ -717,7 +757,11 @@ async function _getColumns(blockId: string): Promise<Column[]> {
 
 async function _getSyncedBlockChildren(block: Block): Promise<Block[]> {
   let originalBlock: Block = block
-  if (block.SyncedBlock && block.SyncedBlock.SyncedFrom && block.SyncedBlock.SyncedFrom.BlockId) {
+  if (
+    block.SyncedBlock &&
+    block.SyncedBlock.SyncedFrom &&
+    block.SyncedBlock.SyncedFrom.BlockId
+  ) {
     try {
       originalBlock = await getBlock(block.SyncedBlock.SyncedFrom.BlockId)
     } catch (err) {
@@ -733,17 +777,24 @@ async function _getSyncedBlockChildren(block: Block): Promise<Block[]> {
 export async function getAllTags(): Promise<SelectProperty[]> {
   if (blogIndexCache.exists()) {
     const allPosts = await getAllPosts()
-    return [...new Set(allPosts.flatMap(post => post.Tags))].sort((a: SelectProperty, b: SelectProperty) => a.name.localeCompare(b.name))
+    return [...new Set(allPosts.flatMap((post) => post.Tags))].sort(
+      (a: SelectProperty, b: SelectProperty) => a.name.localeCompare(b.name)
+    )
   }
 
-  const res: responses.RetrieveDatabaseResponse = await client.databases.retrieve({
-    database_id: DATABASE_ID,
-  })
+  const res: responses.RetrieveDatabaseResponse =
+    await client.databases.retrieve({
+      database_id: DATABASE_ID,
+    })
 
-  return res.properties.Tags.multi_select.options.reduce((acc: SelectProperty[], tag: SelectProperty) => {
-    acc.push(tag)
-    return acc
-  }, [] as SelectProperty[]).sort((a: SelectProperty, b: SelectProperty) => a.name.localeCompare(b.name))
+  return res.properties.Tags.multi_select.options
+    .reduce((acc: SelectProperty[], tag: SelectProperty) => {
+      acc.push(tag)
+      return acc
+    }, [] as SelectProperty[])
+    .sort((a: SelectProperty, b: SelectProperty) =>
+      a.name.localeCompare(b.name)
+    )
 }
 
 function _buildFilter(conditions = []) {
@@ -774,7 +825,7 @@ function _buildFilter(conditions = []) {
 function _uniqueConditions(conditions = []) {
   const properties = []
 
-  return conditions.filter(cond => {
+  return conditions.filter((cond) => {
     if (properties.includes(cond.property)) {
       return false
     }
@@ -858,11 +909,11 @@ function _buildRichText(richTextObject: responses.RichTextObject): RichText {
 }
 
 // likeの総数を加算する関数を追加
-export async function incrementLikes(post:Post) {
+export async function incrementLikes(post: Post) {
   const result = await client.pages.update({
     page_id: post.PageId,
     properties: {
-      'Like': (post.Like || 0) + 1,
+      Like: (post.Like || 0) + 1,
     },
   })
 
@@ -872,4 +923,3 @@ export async function incrementLikes(post:Post) {
 
   return _buildPost(result)
 }
-

@@ -35,7 +35,9 @@ describe('isYouTubeURL', () => {
   })
 
   it('returns true with www.youtube.com', async () => {
-    const got = isYouTubeURL(new URL('http://www.youtube.com/watch?v=0zM3nApSvMg'))
+    const got = isYouTubeURL(
+      new URL('http://www.youtube.com/watch?v=0zM3nApSvMg')
+    )
     expect(got).toBeTruthy
   })
 })
@@ -54,17 +56,27 @@ describe('parseYouTubeVideoId', () => {
   })
 
   it('returns videoId with www.youtube.com/watch', async () => {
-    const got = parseYouTubeVideoId(new URL('http://www.youtube.com/watch?v=0zM3nApSvMg&feature=feedrec_grec_index'))
+    const got = parseYouTubeVideoId(
+      new URL(
+        'http://www.youtube.com/watch?v=0zM3nApSvMg&feature=feedrec_grec_index'
+      )
+    )
     expect(got).toEqual(videoId)
   })
 
   it('returns videoId with www.youtube.com/v', async () => {
-    const got = parseYouTubeVideoId(new URL('http://www.youtube.com/v/0zM3nApSvMg?fs=1&amp;hl=en_US&amp;rel=0'))
+    const got = parseYouTubeVideoId(
+      new URL(
+        'http://www.youtube.com/v/0zM3nApSvMg?fs=1&amp;hl=en_US&amp;rel=0'
+      )
+    )
     expect(got).toEqual(videoId)
   })
 
   it('returns videoId with www.youtube.com/embed', async () => {
-    const got = parseYouTubeVideoId(new URL('http://www.youtube.com/embed/0zM3nApSvMg?rel=0'))
+    const got = parseYouTubeVideoId(
+      new URL('http://www.youtube.com/embed/0zM3nApSvMg?rel=0')
+    )
     expect(got).toEqual(videoId)
   })
 })

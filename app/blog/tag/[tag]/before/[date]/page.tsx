@@ -31,13 +31,19 @@ import '../../../../../../styles/notion-color.css'
 
 export const revalidate = 3600
 
-export async function generateMetadata({ params: { date: encodedDate, tag: encodedTag } }): Promise<Metadata> {
+export async function generateMetadata({
+  params: { date: encodedDate, tag: encodedTag },
+}): Promise<Metadata> {
   const date = decodeURIComponent(encodedDate)
   const tag = decodeURIComponent(encodedTag)
-  const title = `Posts in ${tag} before ${date.split('T')[0]} - ${NEXT_PUBLIC_SITE_TITLE}`
+  const title = `Posts in ${tag} before ${
+    date.split('T')[0]
+  } - ${NEXT_PUBLIC_SITE_TITLE}`
   const description = NEXT_PUBLIC_SITE_DESCRIPTION
   const url = NEXT_PUBLIC_URL ? new URL('/blog', NEXT_PUBLIC_URL) : undefined
-  const images = NEXT_PUBLIC_URL ? [{ url: new URL('/default.png', NEXT_PUBLIC_URL) }] : []
+  const images = NEXT_PUBLIC_URL
+    ? [{ url: new URL('/default.png', NEXT_PUBLIC_URL) }]
+    : []
 
   const metadata: Metadata = {
     title: title,
@@ -63,7 +69,9 @@ export async function generateMetadata({ params: { date: encodedDate, tag: encod
   return metadata
 }
 
-const BlogTagBeforeDatePage = async ({ params: { tag: encodedTag, date: encodedDate } }) => {
+const BlogTagBeforeDatePage = async ({
+  params: { tag: encodedTag, date: encodedDate },
+}) => {
   const tag = decodeURIComponent(encodedTag)
   const date = decodeURIComponent(encodedDate)
 
@@ -79,20 +87,29 @@ const BlogTagBeforeDatePage = async ({ params: { tag: encodedTag, date: encodedD
     getAllTags(),
   ])
 
-  const currentTag = posts[0]?.Tags.find(t => t.name === tag)
+  const currentTag = posts[0]?.Tags.find((t) => t.name === tag)
 
   return (
     <>
-      <GoogleAnalytics pageTitle={`Posts in ${tag} before ${date.split('T')[0]}`} />
+      <GoogleAnalytics
+        pageTitle={`Posts in ${tag} before ${date.split('T')[0]}`}
+      />
       <div className={styles.container}>
         <div className={styles.mainContent}>
           <header>
-            <h2><span className={`tag ${currentTag && colorClass(currentTag.color)}`}>{tag}</span> before {date.split('T')[0]}</h2>
+            <h2>
+              <span
+                className={`tag ${currentTag && colorClass(currentTag.color)}`}
+              >
+                {tag}
+              </span>{' '}
+              before {date.split('T')[0]}
+            </h2>
           </header>
 
           <NoContents contents={posts} />
 
-          {posts.map(post => {
+          {posts.map((post) => {
             return (
               <div className={styles.post} key={post.Slug}>
                 <PostDate post={post} />

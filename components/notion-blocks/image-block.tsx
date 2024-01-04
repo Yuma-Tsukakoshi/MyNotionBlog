@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import useSWR from "swr"
+import useSWR from 'swr'
 import axios from 'axios'
 import { Block } from '../../lib/notion/interfaces'
 import styles from '../../styles/blog.module.css'
@@ -20,7 +20,11 @@ const isExpired = (block: Block): boolean => {
 
   if (block.Type === 'image') {
     const image = block.Image
-    if (image.File && image.File.ExpiryTime && Date.parse(image.File.ExpiryTime) < now) {
+    if (
+      image.File &&
+      image.File.ExpiryTime &&
+      Date.parse(image.File.ExpiryTime) < now
+    ) {
       return true
     }
   }
@@ -28,7 +32,11 @@ const isExpired = (block: Block): boolean => {
 }
 
 const ImageBlock = ({ block: initialBlock }) => {
-  const { data: block } = useSWR(isExpired(initialBlock) && initialBlock.Id, fetchBlock, { fallbackData: initialBlock })
+  const { data: block } = useSWR(
+    isExpired(initialBlock) && initialBlock.Id,
+    fetchBlock,
+    { fallbackData: initialBlock }
+  )
 
   return (
     <figure className={styles.image}>

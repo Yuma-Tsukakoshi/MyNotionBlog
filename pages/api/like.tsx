@@ -1,12 +1,9 @@
-"use client";
+'use client'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import {
-  getPostBySlug,
-  incrementLikes,
-} from '../../lib/notion/client'
+import { getPostBySlug, incrementLikes } from '../../lib/notion/client'
 
-const ApiLike = async function(req: NextApiRequest, res: NextApiResponse) {
+const ApiLike = async function (req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'PUT') {
     res.statusCode = 400
     res.end()

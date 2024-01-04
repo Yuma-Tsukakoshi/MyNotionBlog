@@ -1,5 +1,3 @@
-const NotFound = () => (
-  "404 NotFound"
-)
+const NotFound = () => '404 NotFound'
 
 export default NotFound

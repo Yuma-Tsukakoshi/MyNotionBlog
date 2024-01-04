@@ -28,12 +28,16 @@ import styles from '../../../../styles/blog.module.css'
 
 export const revalidate = 3600
 
-export async function generateMetadata({ params: { date: encodedDate } }): Promise<Metadata> {
+export async function generateMetadata({
+  params: { date: encodedDate },
+}): Promise<Metadata> {
   const date = decodeURIComponent(encodedDate)
   const title = `Post before ${date.split('T')[0]} - ${NEXT_PUBLIC_SITE_TITLE}`
   const description = NEXT_PUBLIC_SITE_DESCRIPTION
   const url = NEXT_PUBLIC_URL ? new URL('/blog', NEXT_PUBLIC_URL) : undefined
-  const images = NEXT_PUBLIC_URL ? [{ url: new URL('/default.png', NEXT_PUBLIC_URL) }] : []
+  const images = NEXT_PUBLIC_URL
+    ? [{ url: new URL('/default.png', NEXT_PUBLIC_URL) }]
+    : []
 
   const metadata: Metadata = {
     title: title,
@@ -84,7 +88,7 @@ const BlogBeforeDatePage = async ({ params: { date: encodedDate } }) => {
 
           <NoContents contents={posts} />
 
-          {posts.map(post => {
+          {posts.map((post) => {
             return (
               <div className={styles.post} key={post.Slug}>
                 <PostDate post={post} />

@@ -1,13 +1,13 @@
-"use client";
+'use client'
 
-import { createStyles, Container, Group, ActionIcon, rem } from '@mantine/core';
-import { IconBrandInstagram  } from '@tabler/icons-react';
-import { MantineLogo , GithubIcon} from '@mantine/ds';
-import Link from 'next/link';
-import Image from "next/image";
+import { createStyles, Container, Group, ActionIcon, rem } from '@mantine/core'
+import { IconBrandInstagram } from '@tabler/icons-react'
+import { MantineLogo, GithubIcon } from '@mantine/ds'
+import Link from 'next/link'
+import Image from 'next/image'
 
 const useStyles = createStyles((theme) => ({
-  footer: { 
+  footer: {
     marginTop: rem(120),
     borderTop: `${rem(1)} solid ${
       theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[2]
@@ -31,21 +31,21 @@ const useStyles = createStyles((theme) => ({
       marginTop: theme.spacing.md,
     },
   },
-}));
+}))
 
 const FooterLink = () => {
-  const { classes } = useStyles();
+  const { classes } = useStyles()
 
   return (
     <div className={classes.footer}>
       <Container className={classes.inner}>
-        <Link href={'/'} >
-          <Image 
-            src= {'/logo_portech.png'}
-            alt='logo_portech'
-            objectFit="cover" 
-            width={100} 
-            height={100} 
+        <Link href={'/'}>
+          <Image
+            src={'/logo_portech.png'}
+            alt="logo_portech"
+            objectFit="cover"
+            width={100}
+            height={100}
           />
         </Link>
         <Group spacing={0} className={classes.links} position="right" noWrap>
@@ -58,7 +58,7 @@ const FooterLink = () => {
         </Group>
       </Container>
     </div>
-  );
+  )
 }
 
 export default FooterLink

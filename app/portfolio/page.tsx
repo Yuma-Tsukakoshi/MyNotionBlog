@@ -1,8 +1,8 @@
-import { UserInfoIcons } from '../../components/portfolio/UserHeadLine';
-import { GridSkillsSection } from '../../components/portfolio/UserSkills';
-import { GridIntroduceSection } from '../../components/portfolio/UserIntroduce';
-import { ArticleCard } from '../../components/portfolio/ArticleCard';
-import { GitHubContibutions } from '../../components/portfolio/github';
+import { UserInfoIcons } from '../../components/portfolio/UserHeadLine'
+import { GridSkillsSection } from '../../components/portfolio/UserSkills'
+import { GridIntroduceSection } from '../../components/portfolio/UserIntroduce'
+import { ArticleCard } from '../../components/portfolio/ArticleCard'
+import { GitHubContibutions } from '../../components/portfolio/github'
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
       <UserInfoIcons />
       <GitHubContibutions />
       <GridSkillsSection />
-      <GridIntroduceSection />  
+      <GridIntroduceSection />
     </main>
   )
 }

@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import { useState } from 'react';
+import { useState } from 'react'
 import {
   createStyles,
   Container,
@@ -13,8 +13,8 @@ import {
   Burger,
   rem,
   Header,
-} from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
+} from '@mantine/core'
+import { useDisclosure } from '@mantine/hooks'
 import {
   IconLogout,
   IconHeart,
@@ -25,16 +25,19 @@ import {
   IconTrash,
   IconSwitchHorizontal,
   IconChevronDown,
-} from '@tabler/icons-react';
-import { MantineLogo } from '@mantine/ds';
-import React from 'react';
-import Link from 'next/link';
-import Image from "next/image";
+} from '@tabler/icons-react'
+import { MantineLogo } from '@mantine/ds'
+import React from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
 
 const useStyles = createStyles((theme) => ({
   header: {
     paddingTop: theme.spacing.sm,
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+    backgroundColor:
+      theme.colorScheme === 'dark'
+        ? theme.colors.dark[6]
+        : theme.colors.gray[0],
     borderBottom: `${rem(1)} solid ${
       theme.colorScheme === 'dark' ? 'transparent' : theme.colors.gray[2]
     }`,
@@ -52,7 +55,8 @@ const useStyles = createStyles((theme) => ({
     transition: 'background-color 100ms ease',
 
     '&:hover': {
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
+      backgroundColor:
+        theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
     },
 
     [theme.fn.smallerThan('xs')]: {
@@ -67,7 +71,8 @@ const useStyles = createStyles((theme) => ({
   },
 
   userActive: {
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
+    backgroundColor:
+      theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
   },
 
   tabs: {
@@ -87,52 +92,62 @@ const useStyles = createStyles((theme) => ({
     fontSize: '1rem',
 
     '&:hover': {
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1],
+      backgroundColor:
+        theme.colorScheme === 'dark'
+          ? theme.colors.dark[5]
+          : theme.colors.gray[1],
     },
 
     '&[data-active]': {
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
-      borderColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[2],
+      backgroundColor:
+        theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
+      borderColor:
+        theme.colorScheme === 'dark'
+          ? theme.colors.dark[7]
+          : theme.colors.gray[2],
     },
   },
-}));
+}))
 
 type HeaderActionProps = {
   tabs: {
-    label: string;
-    link: string;
-  }[];
-};
+    label: string
+    link: string
+  }[]
+}
 
 const HeaderAction = ({ tabs }: HeaderActionProps) => {
-  const { classes, theme, cx } = useStyles();
-  const [opened, { toggle }] = useDisclosure(false);
-  const [userMenuOpened, setUserMenuOpened] = useState(false);
+  const { classes, theme, cx } = useStyles()
+  const [opened, { toggle }] = useDisclosure(false)
+  const [userMenuOpened, setUserMenuOpened] = useState(false)
 
   const items = tabs.map((tab) => (
     <Tabs.Tab value={tab.link} key={tab.label}>
-      <Link href={tab.link} >
-        {tab.label}
-      </Link>
+      <Link href={tab.link}>{tab.label}</Link>
     </Tabs.Tab>
-  ));
+  ))
 
   return (
     <>
       <div className={classes.header}>
         <Container className={classes.mainSection}>
           <Group position="apart">
-            <Link href={'/'} >
-                <Image 
-                  src= {'/logo_portech.png'}
-                  alt='logo_portech'
-                  objectFit="cover" 
-                  width={100} 
-                  height={100} 
-                />
+            <Link href={'/'}>
+              <Image
+                src={'/logo_portech.png'}
+                alt="logo_portech"
+                objectFit="cover"
+                width={100}
+                height={100}
+              />
             </Link>
-            <Burger opened={opened} onClick={toggle} className={classes.burger} size="sm" />
-  
+            <Burger
+              opened={opened}
+              onClick={toggle}
+              className={classes.burger}
+              size="sm"
+            />
+
             <Menu
               width={260}
               position="bottom-end"
@@ -143,7 +158,9 @@ const HeaderAction = ({ tabs }: HeaderActionProps) => {
             >
               <Menu.Target>
                 <UnstyledButton
-                  className={cx(classes.user, { [classes.userActive]: userMenuOpened })}
+                  className={cx(classes.user, {
+                    [classes.userActive]: userMenuOpened,
+                  })}
                 >
                   <Group spacing={7}>
                     {/* <Avatar src={user.image} alt={user.name} radius="xl" size={20} />
@@ -171,7 +188,7 @@ const HeaderAction = ({ tabs }: HeaderActionProps) => {
                 >
                   コメントした記事
                 </Menu.Item> */}
-  
+
                 <Menu.Label>設定</Menu.Label>
                 <Menu.Item icon={<IconSettings size="0.9rem" stroke={1.5} />}>
                   アカウントの設定
@@ -181,15 +198,18 @@ const HeaderAction = ({ tabs }: HeaderActionProps) => {
                 </Menu.Item>
 
                 <Menu.Divider />
-                
-                <Menu.Item color="red" icon={<IconTrash size="0.9rem" stroke={1.5} />}>
+
+                <Menu.Item
+                  color="red"
+                  icon={<IconTrash size="0.9rem" stroke={1.5} />}
+                >
                   アカウントの削除
                 </Menu.Item>
               </Menu.Dropdown>
             </Menu>
           </Group>
         </Container>
-        <Container className='flex justify-center'>
+        <Container className="flex justify-center">
           <Tabs
             defaultValue="Home"
             variant="outline"
@@ -199,12 +219,12 @@ const HeaderAction = ({ tabs }: HeaderActionProps) => {
               tab: classes.tab,
             }}
           >
-            <Tabs.List className='mx-5'>{items}</Tabs.List>
+            <Tabs.List className="mx-5">{items}</Tabs.List>
           </Tabs>
         </Container>
       </div>
     </>
-  );
+  )
 }
 
-export default HeaderAction;
+export default HeaderAction

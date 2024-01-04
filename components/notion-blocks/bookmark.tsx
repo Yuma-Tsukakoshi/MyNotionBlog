@@ -26,10 +26,9 @@ const Bookmark = ({ block }) => {
   useEffect(() => {
     try {
       const url = new URL(sURL)
-      axios.get(`/api/url-metadata?url=${url.toString()}`)
-        .then((res) => {
-          setMetadata(res.data as Metadata)
-        })
+      axios.get(`/api/url-metadata?url=${url.toString()}`).then((res) => {
+        setMetadata(res.data as Metadata)
+      })
     } catch (e) {
       console.log(e)
     }
@@ -56,16 +55,20 @@ const Bookmark = ({ block }) => {
           <div>{description ? description : ''}</div>
           <div>
             <div>
-              <img src={`https://www.google.com/s2/favicons?domain=${url.hostname}`} alt="title" loading="lazy" decoding="async" />
+              <img
+                src={`https://www.google.com/s2/favicons?domain=${url.hostname}`}
+                alt="title"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div>{url.origin}</div>
           </div>
         </div>
         <div>
-          {image
-            ? <img src={image} alt="title" loading="lazy" decoding="async" />
-            : null
-          }
+          {image ? (
+            <img src={image} alt="title" loading="lazy" decoding="async" />
+          ) : null}
         </div>
       </a>
     </div>
